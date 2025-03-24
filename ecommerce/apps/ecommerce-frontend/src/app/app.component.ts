@@ -4,7 +4,7 @@ import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular
 import { fontAwesomeIcons } from './shared/font-awesome-icons';
 @Component({
   imports: [RouterModule, FontAwesomeModule],
-  selector: 'app-root',
+  selector: 'ecom-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
