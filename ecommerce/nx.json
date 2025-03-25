@@ -33,15 +33,7 @@
       "unitTestRunner": "none"
     },
     "@nx/angular:component": {
-<<<<<<< HEAD
       "style": "scss"
-=======
-<<<<<<< HEAD
-      "style": "scss"
-=======
-      "style": "scss"
->>>>>>> d1d384709e493bb6c6443adb3776f2bcc4cfd516
->>>>>>> a4feaa245c652d2dd1de517e1779f95991f0186c
     }
   }
 }
