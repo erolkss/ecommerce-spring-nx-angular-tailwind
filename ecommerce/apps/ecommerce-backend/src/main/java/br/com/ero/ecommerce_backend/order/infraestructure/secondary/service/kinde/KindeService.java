@@ -1,12 +1,25 @@
 package br.com.ero.ecommerce_backend.order.infraestructure.secondary.service.kinde;
 
+import org.apache.hc.core5.http.ContentType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.Optional;
+
 @Service
 public class KindeService {
+
+
+  private static final Logger log = LoggerFactory.getLogger(KindeService.class);
 
   @Value("${application.kinde.api}")
   private String apiUrl;
@@ -24,4 +37,24 @@ public class KindeService {
     .requestFactory(new HttpComponentsClientHttpRequestFactory())
     .baseUrl(apiUrl)
     .build();
+
+  private Optional<String> getToken() {
+    try {
+      ResponseEntity
+        <KindeAccessToken> accessToken = restClient.post()
+        .uri(apiUrl + "/oauth/token")
+        .body("grant_type=client_credentials&audience=" + URLEncoder.encode(audience, StandardCharsets.UTF_8))
+        .accept(MediaType.APPLICATION_JSON)
+        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        .header("Authorization",
+          "Basic " + Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8)))
+        .header("Content-Type", ContentType.APPLICATION_FORM_URLENCODED.getMimeType())
+        .retrieve()
+        .toEntity(KindeAccessToken.class);
+      return Optional.of(accessToken.getBody().accessToken());
+    } catch (Exception e) {
+      log.error("Error while getting token", e);
+      return Optional.empty();
+    }
+  }
 }
