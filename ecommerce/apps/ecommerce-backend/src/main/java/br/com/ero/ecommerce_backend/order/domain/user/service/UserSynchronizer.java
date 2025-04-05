@@ -2,6 +2,7 @@ package br.com.ero.ecommerce_backend.order.domain.user.service;
 
 import br.com.ero.ecommerce_backend.order.domain.user.aggregate.User;
 import br.com.ero.ecommerce_backend.order.domain.user.repository.UserRepository;
+import br.com.ero.ecommerce_backend.order.domain.user.vo.UserAddressToUpdate;
 import br.com.ero.ecommerce_backend.order.infraestructure.secondary.service.kinde.KindeService;
 import br.com.ero.ecommerce_backend.shared.authentication.application.AuthenticatedUser;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -47,6 +48,10 @@ public class UserSynchronizer {
   private void updateUser(User user, User existingUser) {
     existingUser.updateFromUser(user);
     userRepository.save(existingUser);
+  }
+
+  public void updateAddress(UserAddressToUpdate userAddressToUpdate) {
+    userRepository.updateAddress(userAddressToUpdate.userPublicId(), userAddressToUpdate);
   }
 
 }
