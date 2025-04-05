@@ -4,6 +4,7 @@ import org.apache.hc.core5.http.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestClient;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -56,5 +58,22 @@ public class KindeService {
       log.error("Error while getting token", e);
       return Optional.empty();
     }
+  }
+
+
+  public Map<String, Object> getUserInfo(String userId) {
+    String token = getToken().orElseThrow(() -> new IllegalStateException("No token found"));
+
+    var typeRef = new ParameterizedTypeReference<Map<String, Object>>() {
+    };
+
+    ResponseEntity<Map<String, Object>> authorization = restClient.get()
+      .uri(apiUrl + "/api/v1/user?id={id}", userId)
+      .header("Authorization", "Bearer " + token)
+      .accept(MediaType.APPLICATION_JSON)
+      .retrieve()
+      .toEntity(typeRef);
+
+    return authorization.getBody();
   }
 }
