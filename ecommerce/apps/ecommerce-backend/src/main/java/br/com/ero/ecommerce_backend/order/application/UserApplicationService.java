@@ -29,4 +29,9 @@ public class UserApplicationService {
 
     return userReader.getByEmail(new UserEmail(AuthenticatedUser.username().get())).orElseThrow();
   }
+
+  @Transactional(readOnly = true)
+  public User getAuthenticatedUser() {
+    return userReader.getByEmail(new UserEmail(AuthenticatedUser.username().get())).orElseThrow();
+  }
 }
