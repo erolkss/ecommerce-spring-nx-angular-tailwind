@@ -48,6 +48,10 @@ public class SpringDataUserRepository implements UserRepository {
 
   @Override
   public void updateAddress(UserPublicId userPublicId, UserAddressToUpdate userAddress) {
-
+    jpaUserRepository.updateAddress(userPublicId.value(),
+      userAddress.userAddress().street(),
+      userAddress.userAddress().city(),
+      userAddress.userAddress().country(),
+      userAddress.userAddress().zipCode());
   }
 }
