@@ -42,7 +42,8 @@ public class SpringDataUserRepository implements UserRepository {
 
   @Override
   public Optional<User> getOneByEmail(UserEmail userEmail) {
-    return Optional.empty();
+    return jpaUserRepository.findByEmail(userEmail.value())
+      .map(UserEntity::toDomain);
   }
 
   @Override
