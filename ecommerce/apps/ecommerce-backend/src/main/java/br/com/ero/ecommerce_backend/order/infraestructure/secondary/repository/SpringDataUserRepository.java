@@ -36,7 +36,8 @@ public class SpringDataUserRepository implements UserRepository {
 
   @Override
   public Optional<User> get(UserPublicId userPublicId) {
-    return Optional.empty();
+    return jpaUserRepository.findOneByPublicId(userPublicId.value())
+      .map(UserEntity::toDomain);
   }
 
   @Override
