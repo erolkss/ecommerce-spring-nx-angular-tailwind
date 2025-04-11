@@ -18,6 +18,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@tanstack/angular-query-devtools-experimental": "^5.54.1",
+    "@tanstack/angular-query-experimental": "^5.54.1",
     "angular-auth-oidc-client": "^18.0.1",
     "express": "^4.21.2",
     "ngxtension": "^4.0.0",
