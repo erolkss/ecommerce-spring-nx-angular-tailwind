@@ -7,6 +7,8 @@ logging:
 spring:
   application:
     name: Ecommerce Backend
+  profiles:
+    active: local
   threads:
     virtual:
       enabled: true
@@ -45,14 +47,14 @@ spring:
     change-log: classpath:db/changelog/master.xml
     default-schema: ecommerce_db
     contexts: dev
-  #    drop-first: true
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          issuer-uri: https://codecake.kinde.com
-#          jwk-set-uri: https://codecake.kinde.com/.well-known/jwks
-#          audiences: http://localhost:8080/api
+#      drop-first: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://erobr.kinde.com/.well-known/jwks
+          issuer-uri: https://erobr.kinde.com/
+          audiences: http://localhost:8080/api
   devtools:
     restart:
       enabled: false
@@ -77,10 +79,10 @@ application:
     allow-credentials: false
     max-age: 300
   kinde:
-    api: https://codecake.kinde.com
+    api: https://erobr.kinde.com
     client-id: ${KINDE_CLIENT_ID}
     client-secret: ${KINDE_CLIENT_SECRET}
-    audience: https://codecake.kinde.com/api
+    audience: https://erobr.kinde.com/api
   stripe:
     api-key: ${STRIPE_API_KEY}
     webhook-secret: ${STRIPE_WEBHOOK_SECRET}
