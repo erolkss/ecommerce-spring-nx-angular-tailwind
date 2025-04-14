@@ -27,7 +27,7 @@ export class Oauth2Service {
 
   fetchUserHttp(forceResync: boolean): Observable<ConnectedUser> {
     const params = new HttpParams().set('forceResync', forceResync);
-    return this.http.get<ConnectedUser>(`${enviroment.apiUrl}/user/authenticated`, { params })
+    return this.http.get<ConnectedUser>(`${enviroment.apiUrl}/users/authenticated`, { params })
   }
 
   login(): void {
