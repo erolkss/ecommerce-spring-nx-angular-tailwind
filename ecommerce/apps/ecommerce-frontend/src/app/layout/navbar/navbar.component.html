@@ -31,7 +31,7 @@
         <div class="dropdown dropdown-end pe-4">
             <div tabindex="0" role="button">
                 @if (this.isConnected() && connectedUserQuery?.data()?.imageUrl !== null ) {
-                    <img src="{{connectedUserQuery?.data()?.imageUrl}}" alt="user-avatar" class="avatar-unknown rounded-full"/>
+                    <img src="{{connectedUserQuery?.data()?.imageUrl}}" alt="user-avatar" class="avatar-unknown rounded-full" width="45px"/>
                 } @else {
                     <fa-icon [icon]="['fas', 'user']" class="menu-icon"></fa-icon>
                 }
