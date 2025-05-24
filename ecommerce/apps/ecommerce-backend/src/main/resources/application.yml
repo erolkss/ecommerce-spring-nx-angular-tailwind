@@ -53,7 +53,7 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://erobr.kinde.com/.well-known/jwks
-          issuer-uri: https://erobr.kinde.com/
+          issuer-uri: https://erobr.kinde.com
           audiences: http://localhost:8080/api
   devtools:
     restart:

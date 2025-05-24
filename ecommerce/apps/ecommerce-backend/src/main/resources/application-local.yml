@@ -2,7 +2,7 @@ logging:
   level:
     ROOT: INFO
     org.hibernate.SQL: DEBUG
-    org.springframework.security: INFO
+    org.springframework.security: TRACE
     br.com.ero.ecommerce_backend: DEBUG
     org.apache.hc.client5.http: INFO
 
