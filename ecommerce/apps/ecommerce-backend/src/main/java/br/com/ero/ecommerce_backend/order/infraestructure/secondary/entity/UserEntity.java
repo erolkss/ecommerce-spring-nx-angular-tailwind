@@ -64,7 +64,7 @@ public class UserEntity extends AbstractAuditingEntity<Long> {
   public UserEntity() {
   }
 
-  public UserEntity(Long id, String lastName, String firstName, String email, String imageUrl, UUID publicId, String addressStreet, String addressCity, String addressZioCode, String addressCountry, Instant lastSeen, Set<AuthorityEntity> authorities) {
+  public UserEntity(Long id, String lastName, String firstName, String email, String imageUrl, UUID publicId, String addressStreet, String addressCity, String addressZipCode, String addressCountry, Instant lastSeen, Set<AuthorityEntity> authorities) {
     this.id = id;
     this.lastName = lastName;
     this.firstName = firstName;
@@ -73,7 +73,7 @@ public class UserEntity extends AbstractAuditingEntity<Long> {
     this.publicId = publicId;
     this.addressStreet = addressStreet;
     this.addressCity = addressCity;
-    this.addressZipCode = addressZioCode;
+    this.addressZipCode = addressZipCode;
     this.addressCountry = addressCountry;
     this.lastSeen = lastSeen;
     this.authorities = authorities;
