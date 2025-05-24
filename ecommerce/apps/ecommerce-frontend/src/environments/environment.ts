@@ -1,4 +1,4 @@
-export const enviroment = {
+export const environment = {
     kinde: {
         authority: "https://erobr.kinde.com",
         redirectUrl: "http://localhost:4200",

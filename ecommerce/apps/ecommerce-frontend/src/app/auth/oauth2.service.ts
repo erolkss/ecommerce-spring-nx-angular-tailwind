@@ -4,7 +4,7 @@ import { CreateQueryResult, injectQuery } from '@tanstack/angular-query-experime
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { ConnectedUser } from '../shared/model/user.model';
 import { firstValueFrom, Observable } from 'rxjs';
-import { enviroment } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class Oauth2Service {
 
   fetchUserHttp(forceResync: boolean): Observable<ConnectedUser> {
     const params = new HttpParams().set('forceResync', forceResync);
-    return this.http.get<ConnectedUser>(`${enviroment.apiUrl}/users/authenticated`, { params })
+    return this.http.get<ConnectedUser>(`${environment.apiUrl}/users/authenticated`, { params })
   }
 
   login(): void {
